@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
-import "../stylesheets/App.scss";
+import { Route, Switch } from "react-router-dom";
 import getDataFromApi from "../services/getDataFromApi";
 import ls from "../services/local-storage";
+import "../stylesheets/App.scss";
 import logo from "../images/Rick_and_Morty_-_logo.png";
 import Filters from "./Filters";
 import CharacterList from "./CharacterList";
 import CharacterDetails from "./CharacterDetails";
 
 const App = () => {
-  const [characters, setCharacters] = useState(ls.get("characters", []));
+  const charactersFromLocalStorage = ls.get("characters", []);
+  const [characters, setCharacters] = useState(charactersFromLocalStorage);
   const [nameFilter, setNameFilter] = useState("");
   const [specieFilter, setSpecieFilter] = useState("all");
 
   //COMPROBANDO SI HAY DATOS EN EL LOCALSTORAGE -------------------------------
   useEffect(() => {
-    if (characters.length === 0) {
+    if (charactersFromLocalStorage.length === 0) {
       getDataFromApi().then((data) => setCharacters(data));
     }
-  }, []);
+  }, [charactersFromLocalStorage]);
 
   //GUARDANDO EN LOCALSTORAGE -------------------------------
   useEffect(() => {
@@ -26,14 +28,12 @@ const App = () => {
 
   //EVENTOS DE FILTRO -------------------------------
   const handleFilter = (data) => {
-    //console.log(data);
     if (data.key === "name") {
       setNameFilter(data.value);
     } else if (data.key === "specie") {
       setSpecieFilter(data.value);
     }
   };
-  // console.log("Specie: ", specieFilter); // Estado specie recogido OK
 
   const filteredCharacters = characters
     .filter((character) => {
@@ -43,26 +43,41 @@ const App = () => {
       if (specieFilter === "all") {
         return true;
       } else {
-        return character.specie === specieFilter;
+        return character.species === specieFilter;
       }
     });
 
+  const renderCharacterDetails = (props) => {
+    const routeCharacterId = parseInt(props.match.params.id);
+    const foundCharacter = characters.find((character) => {
+      return character.id === routeCharacterId;
+    });
+    //console.log("Router props: ", props.match.params.id, foundCharacter);
+    if (foundCharacter !== undefined) {
+      return <CharacterDetails character={foundCharacter} />;
+    } else {
+      return <p>Personaje no encontrado</p>;
+    }
+  };
+
   return (
     <>
-      <header>
-        <h1 className="header__title">Rick and Morty</h1>
-        <img
-          className="header__img"
-          src={logo}
-          alt="Rick and Morty logo"
-          title="Rick and Morty logo"
-        />
-        <Filters handleFilter={handleFilter} />
-      </header>
-      <div className="main">
-        <CharacterList characters={filteredCharacters} />
-        <CharacterDetails />
-      </div>
+      <h1 className="header__title">Rick and Morty</h1>
+      <img
+        className="header__img"
+        src={logo}
+        alt="Rick and Morty logo"
+        title="Rick and Morty logo"
+      />
+      <Switch>
+        <Route exact path="/">
+          <div className="main">
+            <Filters handleFilter={handleFilter} />
+            <CharacterList characters={filteredCharacters} />
+          </div>
+        </Route>
+        <Route path="/character/:id" render={renderCharacterDetails} />
+      </Switch>
     </>
   );
 };
