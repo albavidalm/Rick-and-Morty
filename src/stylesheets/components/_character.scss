@@ -1,0 +1,23 @@
+.card {
+  width: 200px;
+  height: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+
+  &__img {
+    display: block;
+    margin: auto;
+    width: 100%;
+    height: auto;
+  }
+  &__title {
+    margin-top: 0.8rem;
+    text-transform: capitalize;
+  }
+  &__specie {
+    margin-top: 0.6rem;
+    color: green;
+  }
+}
