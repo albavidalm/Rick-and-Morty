@@ -1,12 +1,16 @@
-/*.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}*/
 .cards {
+  width: 100vw;
   margin-top: 2rem;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include tablet {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  @include desktop {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  }
 }

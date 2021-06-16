@@ -7,6 +7,7 @@ const FilterByName = (props) => {
       key: "name",
     });
   };
+
   return (
     <fieldset className="form__name">
       <label className="form__name--label" htmlFor="name">

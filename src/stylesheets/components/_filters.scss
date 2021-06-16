@@ -1,9 +1,12 @@
 .form {
-  width: 400px;
+  width: 90vw;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-content: center;
+  @include tablet {
+    width: 400px;
+  }
   &__name {
     margin-top: 2rem;
     padding-bottom: 1rem;
