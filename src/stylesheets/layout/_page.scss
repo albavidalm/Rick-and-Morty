@@ -1,18 +1,66 @@
 .page {
-  background-color: rgb(117, 117, 117);
   width: 100%;
   height: 100vh;
   margin-top: 2rem;
   padding: 0 2rem;
+  background: linear-gradient(350deg, #69e751, #000000, #00149e, #7608ff);
+  background-size: 800% 800%;
+
+  -webkit-animation: space 14s ease infinite;
+  -moz-animation: space 14s ease infinite;
+  animation: space 14s ease infinite;
 }
+
+@-webkit-keyframes space {
+  0% {
+    background-position: 77% 0%;
+  }
+  50% {
+    background-position: 24% 100%;
+  }
+  100% {
+    background-position: 77% 0%;
+  }
+}
+@-moz-keyframes space {
+  0% {
+    background-position: 77% 0%;
+  }
+  50% {
+    background-position: 24% 100%;
+  }
+  100% {
+    background-position: 77% 0%;
+  }
+}
+@keyframes space {
+  0% {
+    background-position: 77% 0%;
+  }
+  50% {
+    background-position: 24% 100%;
+  }
+  100% {
+    background-position: 77% 0%;
+  }
+}
+
 .header {
   &__title {
     color: transparent;
     font-size: 1px;
   }
   &__img {
-    width: 30%;
+    width: 45%;
     display: block;
     margin: auto;
   }
+}
+
+.not-found {
+  text-align: center;
+  color: white;
+  font-family: "Orelega One", cursive;
+  font-size: 4rem;
+  margin-top: 5rem;
 }

@@ -56,7 +56,7 @@ const App = () => {
     if (foundCharacter !== undefined) {
       return <CharacterDetails character={foundCharacter} />;
     } else {
-      return <p>Personaje no encontrado</p>;
+      return <h2 className="not-found">Personaje no encontrado</h2>;
     }
   };
 

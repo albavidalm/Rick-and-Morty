@@ -8,18 +8,19 @@ const FilterByName = (props) => {
     });
   };
   return (
-    <>
-      <label className="form__label display-block" htmlFor="name">
-        Filtrar por nombre
+    <fieldset className="form__name">
+      <label className="form__name--label" htmlFor="name">
+        Busca un personaje:
       </label>
       <input
-        className="form__input-text"
+        className="form__name--input"
         type="text"
+        placeholder="Ej: Rick"
         name="name"
         id="name"
         onChange={handleOnChange}
       />
-    </>
+    </fieldset>
   );
 };
 

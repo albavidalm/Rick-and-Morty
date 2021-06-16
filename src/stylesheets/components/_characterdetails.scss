@@ -1,0 +1,41 @@
+.detail {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  &__back {
+    color: white;
+    font-size: 2rem;
+    font-weight: bolder;
+    text-align: left;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  &__back:hover {
+    color: $color-bg-card;
+  }
+  &__card {
+    background-color: $color-bg-card;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    &--info {
+      color: white;
+      padding-left: 2rem;
+      line-height: 2rem;
+      &-title {
+        color: white;
+        font-family: $font-title;
+      }
+    }
+  }
+}
+.boldtitle {
+  font-weight: bolder;
+}
+.fa-chevron-circle-left {
+  font-size: 1.8rem;
+  padding-right: 0.8rem;
+}
