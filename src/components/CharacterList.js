@@ -2,11 +2,20 @@ import React from "react";
 import CharacterCard from "./CharacterCard";
 
 const CharacterList = (props) => {
-  const characterElements = props.characters.map((character) => {
-    return <CharacterCard key={character.id} character={character} />;
-  });
+  let characterElements = "";
+  if (props.characters.length !== 0) {
+    characterElements = props.characters.map((character) => {
+      return <CharacterCard key={character.id} character={character} />;
+    });
+  } else {
+    characterElements = (
+      <div className="message">
+        <h2 className="not-found">Personaje no encontrado</h2>
+      </div>
+    );
+  }
   return (
-    <section>
+    <section className="cards__container">
       <ul className="cards">{characterElements}</ul>
     </section>
   );

@@ -2,7 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CharacterDetails = (props) => {
-  console.log(props.character);
+  const getSpecie = () => {
+    if (props.character.species === "Alien") {
+      return <i className="fas fa-rocket"></i>;
+    } else if (props.character.species === "Human") {
+      return <i className="fas fa-user"></i>;
+    }
+  };
+  const getStatus = () => {
+    if (props.character.status === "unknown") {
+      return <i className="fas fa-question-circle"></i>;
+    } else if (props.character.status === "Dead") {
+      return <i className="fas fa-skull-crossbones"></i>;
+    } else if (props.character.status === "Alive") {
+      return <i className="fas fa-heart"></i>;
+    }
+  };
+
+  //console.log(props.character);
   return (
     <article className="detail">
       <Link className="detail__back" to="/">
@@ -23,7 +40,7 @@ const CharacterDetails = (props) => {
             <ul className="detail__card--info-description">
               <li>
                 <span className="boldtitle">Especie: </span>
-                {props.character.species}
+                {props.character.species} {getSpecie()}
               </li>
               <li>
                 <span className="boldtitle">Origen: </span>
@@ -35,7 +52,7 @@ const CharacterDetails = (props) => {
               </li>
               <li>
                 <span className="boldtitle">Estado: </span>
-                {props.character.status}
+                {props.character.status} {getStatus()}
               </li>
             </ul>
           </section>

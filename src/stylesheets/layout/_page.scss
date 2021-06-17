@@ -1,6 +1,5 @@
 .page {
   width: 100%;
-
   height: 100vh;
   margin-top: 2rem;
   padding: 0 2rem;
@@ -61,7 +60,13 @@
 .not-found {
   text-align: center;
   color: white;
-  font-family: "Orelega One", cursive;
+  font-family: "Roboto Slab", serif;
   font-size: 4rem;
   margin-top: 5rem;
+}
+.message {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: center;
 }

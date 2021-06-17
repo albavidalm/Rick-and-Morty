@@ -23,13 +23,19 @@
   &__title {
     margin-top: 0.8rem;
     text-transform: capitalize;
-    font-family: "Orelega One", cursive;
+    font-family: $font-title;
     color: black;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
   &__specie {
     margin-top: 0.6rem;
-    font-family: "Roboto", sans-serif;
+    font-family: $font-main;
     color: black;
+    font-weight: 300;
   }
+}
+
+.fa-specie {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
 }
