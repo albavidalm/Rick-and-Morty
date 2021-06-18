@@ -13,6 +13,7 @@ const App = () => {
   const [characters, setCharacters] = useState(charactersFromLocalStorage);
   const [nameFilter, setNameFilter] = useState("");
   const [specieFilter, setSpecieFilter] = useState("all");
+  const [originFilter, setOriginFilter] = useState("");
 
   //COMPROBANDO SI HAY DATOS EN EL LOCALSTORAGE -------------------------------
   useEffect(() => {
@@ -32,6 +33,8 @@ const App = () => {
       setNameFilter(data.value);
     } else if (data.key === "specie") {
       setSpecieFilter(data.value);
+    } else if (data.key === "origin") {
+      setOriginFilter(data.value);
     }
   };
 
@@ -45,8 +48,12 @@ const App = () => {
       } else {
         return character.species === specieFilter;
       }
+    })
+    .filter((character) => {
+      return character.origin
+        .toLowerCase()
+        .includes(originFilter.toLowerCase());
     });
-
   const renderCharacterDetails = (props) => {
     const routeCharacterId = parseInt(props.match.params.id);
     const foundCharacter = characters.find((character) => {

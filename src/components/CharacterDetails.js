@@ -9,6 +9,7 @@ const CharacterDetails = (props) => {
       return <i className="fas fa-user"></i>;
     }
   };
+
   const getStatus = () => {
     if (props.character.status === "unknown") {
       return <i className="fas fa-question-circle"></i>;

@@ -40,4 +40,25 @@
       font-size: 0.8rem;
     }
   }
+  &__origin {
+    padding-bottom: 1rem;
+    font-family: $font-main;
+    font-size: 1.1rem;
+    color: white;
+    &--label {
+      padding-right: 0.8rem;
+    }
+    &--input {
+      height: 1.3rem;
+      width: 220px;
+      background-color: rgba(255, 255, 255, 0.603);
+      padding-left: 0.5rem;
+      caret-color: greenyellow;
+      &::placeholder {
+        color: grey;
+        font-size: 0.9rem;
+        font-style: italic;
+      }
+    }
+  }
 }
